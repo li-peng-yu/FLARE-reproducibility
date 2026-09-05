@@ -1,0 +1,36 @@
+# Compute-matched Stage-2 ground-truth-boundary control.
+output_dir: outputs/paper_formal_20260822/stage2_gt_standard25k
+log_dir: logs/skx_paper_formal_20260822/stage2_gt_standard25k
+
+prior:
+  type: standard_gaussian
+  fit_kappa: false
+  kappa_multiplier: 1.0
+  kappa: 1.0
+  min_sigma: 1.0e-4
+
+train:
+  steps: 25000
+  resume_from: ${FLARE_CHECKPOINT_ROOT}/flare/core_seed78.pt
+  resume_model_state: ema
+  resume_reset_step: true
+  resume_strict: true
+  lr: 1.0e-5
+  dit_lr: 2.5e-6
+  min_lr: 1.0e-7
+  warmup_steps: 1000
+  visual_out_dir: outputs/paper_formal_20260822/stage2_gt_standard25k/visualizations
+  visual_mode: rollout
+  segment_pushforward:
+    enabled: true
+    cache_mode: precompute
+    cache_batch_size: 128
+    rebuild_on_stage2_start: false
+    teacher_checkpoint: ${FLARE_CHECKPOINT_ROOT}/flare/core_seed78.pt
+    teacher_state: ema
+    predicted_inits_per_segment: 2
+    candidate_inits_per_segment: 2
+    true_weight: 1.0
+    pred_weight: 0.0
+    include_first_segment: true
+    roll_ode_steps: 10

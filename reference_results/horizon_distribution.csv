@@ -1,0 +1,6 @@
+horizon_ns,support,base_conditions,distribution_score,distribution_score_ci_low,distribution_score_ci_high,paired_angle_deg,paired_angle_deg_ci_low,paired_angle_deg_ci_high,angular_energy_distance_deg,angular_energy_distance_deg_ci_low,angular_energy_distance_deg_ci_high,fair_energy_score,fair_energy_score_ci_low,fair_energy_score_ci_high
+1.0,seen,33,0.823,0.783,0.857,29.17,25.28,33.09,11.83,10.27,13.48,0.3189,0.2820,0.3559
+1.5,interpolation,33,0.793,0.727,0.848,30.86,26.65,34.85,12.48,10.76,14.15,0.3397,0.3008,0.3780
+2.0,seen,33,0.777,0.706,0.839,31.38,27.13,35.44,12.74,11.05,14.47,0.3446,0.3058,0.3822
+2.5,interpolation,33,0.776,0.708,0.838,32.39,28.15,36.84,13.18,11.47,14.95,0.3594,0.3207,0.3986
+3.0,seen,33,0.780,0.713,0.843,32.87,28.27,37.21,13.54,11.68,15.46,0.3622,0.3225,0.4020

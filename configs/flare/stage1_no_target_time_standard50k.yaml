@@ -1,0 +1,17 @@
+# Target-time-conditioning ablation matched to MagFlow.
+output_dir: outputs/paper_formal_20260822/stage1_no_target_time_standard50k
+log_dir: logs/skx_paper_formal_20260822/stage1_no_target_time_standard50k
+
+prior:
+  type: standard_gaussian
+  fit_kappa: false
+  kappa_multiplier: 1.0
+  kappa: 1.0
+  min_sigma: 1.0e-4
+
+model:
+  mask_target_time: true
+
+train:
+  visual_out_dir: outputs/paper_formal_20260822/stage1_no_target_time_standard50k/visualizations
+  visual_mode: trajectory

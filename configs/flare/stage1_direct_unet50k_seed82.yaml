@@ -1,0 +1,38 @@
+# [FIVE-SEED DIRECT U-NET CONTROL 2026-09-04]
+# Additional deterministic replicate using the same U-Net and local rotation
+# target as FLARE, trained by direct MSE at tau=0.
+seed: 82
+output_dir: outputs/skx_bt_1000base_x5/paper_revision_20260904/flow_necessity/direct_unet_seed82
+log_dir: log/x5_five_seed_ensemble_20260904/direct_unet_seed82
+
+bridge:
+  state_repr: alpha
+  source_mode: identity
+  objective: residual
+
+prior:
+  type: standard_gaussian
+  fit_kappa: false
+  kappa_multiplier: 1.0
+  kappa: 1.0
+  min_sigma: 1.0e-4
+
+train:
+  visual_examples: 0
+  visual_out_dir: outputs/skx_bt_1000base_x5/paper_revision_20260904/flow_necessity/direct_unet_seed82/visualizations
+  loss:
+    cfm_weight: 1.0
+    unit_weight: 0.0
+    llg_weight: 0.0
+    topo_weight: 0.0
+    alpha_mix: 0.0
+    tau_sampling: zero
+    weight_mode: uniform
+    change_aware_reweight:
+      enabled: false
+    minibatch_ot:
+      enabled: false
+
+sampler:
+  ode_steps: 1
+  method: euler

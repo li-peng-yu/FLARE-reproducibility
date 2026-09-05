@@ -1,0 +1,20 @@
+{
+  "package_version": "0.2.0",
+  "formal_algorithm_version": "0.2.0",
+  "formal_distance_id": "full_vector_patch_shift_4x4_shift16_symmetric",
+  "algorithms": {
+    "same_condition": "symmetric_local_density_ratio_score",
+    "cross_condition": "equal_group_probability_rank_calibration"
+  },
+  "formal_distance_defaults": {
+    "resolution": [256, 256],
+    "magnetization_components": 3,
+    "blocks": [4, 4],
+    "patch_edge_px": 64,
+    "shift_radius_each_axis_px": 16,
+    "integer_shifts": true,
+    "downsampling": false,
+    "shift_penalty": 0.0,
+    "symmetric": true
+  }
+}

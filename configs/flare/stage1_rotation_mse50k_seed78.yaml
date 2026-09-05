@@ -1,0 +1,43 @@
+# [FLOW-NECESSITY CONTROL 2026-09-02]
+# Deterministic regression in exactly the same local axis--angle target used
+# by FLARE.  At tau=0 with an identity (zero) source, the alpha bridge exposes
+# a zero rotation-state input and the velocity label is exactly
+# Omega* = Log_{M_init}(M_target).  Euler-1 inference is one U-Net evaluation.
+seed: 78
+output_dir: outputs/skx_bt_1000base_x5/paper_revision_20260902/flow_necessity/rotation_mse_seed78
+log_dir: log/skx_paper_revision_20260902/flow_necessity/rotation_mse_seed78
+
+bridge:
+  state_repr: alpha
+  source_mode: identity
+  objective: residual
+
+# Kept identical to the matched core run even though a deterministic identity
+# source does not sample this prior.
+prior:
+  type: standard_gaussian
+  fit_kappa: false
+  kappa_multiplier: 1.0
+  kappa: 1.0
+  min_sigma: 1.0e-4
+
+train:
+  # Match the original seed-78 core run; seeds 79/80 both use zero here.
+  visual_examples: 12
+  visual_out_dir: outputs/skx_bt_1000base_x5/paper_revision_20260902/flow_necessity/rotation_mse_seed78/visualizations
+  loss:
+    cfm_weight: 1.0
+    unit_weight: 0.0
+    llg_weight: 0.0
+    topo_weight: 0.0
+    alpha_mix: 0.0
+    tau_sampling: zero
+    weight_mode: uniform
+    change_aware_reweight:
+      enabled: false
+    minibatch_ot:
+      enabled: false
+
+sampler:
+  ode_steps: 1
+  method: euler

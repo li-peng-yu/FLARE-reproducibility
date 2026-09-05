@@ -1,0 +1,33 @@
+{
+  "groups": [
+    {"name": "inplane_soft", "label": "In-plane soft magnet"},
+    {"name": "perpendicular_no_dmi", "label": "Perpendicular, no DMI"},
+    {"name": "interfacial_dmi_and_stripe", "label": "Interfacial DMI / stripe"},
+    {"name": "bulk_dmi_2d", "label": "Effective 2D bulk DMI"}
+  ],
+  "conditions": [
+    {
+      "id": "condition_0001",
+      "group": "inplane_soft",
+      "condition_dir": "../data/condition_0001"
+    },
+    {
+      "id": "condition_0002",
+      "group": "perpendicular_no_dmi",
+      "condition_dir": "../data/condition_0002"
+    },
+    {
+      "id": "condition_0003",
+      "group": "interfacial_dmi_and_stripe",
+      "condition_dir": "../data/condition_0003"
+    },
+    {
+      "id": "condition_0004",
+      "group": "bulk_dmi_2d",
+      "condition_dir": "../data/condition_0004",
+      "model_samples": "predictions.npy",
+      "anchor": "initial.ovf",
+      "truth": "final.ovf"
+    }
+  ]
+}

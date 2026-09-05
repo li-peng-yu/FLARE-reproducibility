@@ -1,0 +1,9 @@
+temperature_k,reference_low_temperature_k,reference_high_temperature_k,base_conditions,metric,id_interpolation_reference,unseen_temperature,absolute_degradation,absolute_degradation_ci_low,absolute_degradation_ci_high,relative_degradation_percent,relative_degradation_percent_ci_low,relative_degradation_percent_ci_high
+90,30,150,36,single_segment_angle_deg,23.815,24.118,+0.303,-0.230,+0.843,+1.27,-0.96,+3.55
+90,30,150,35,autoregressive_handoff_angle_deg,31.213,29.917,-1.296,-2.573,-0.117,-4.15,-8.06,-0.39
+90,30,150,36,distribution_score,0.6687,0.7380,-0.0693,-0.1616,+0.0270,-10.36,-24.99,+3.99
+90,30,150,36,angular_energy_distance_deg,12.749,12.385,-0.365,-1.388,+0.598,-2.86,-10.50,+4.89
+225,150,300,36,single_segment_angle_deg,37.291,37.903,+0.612,-0.102,+1.300,+1.64,-0.28,+3.45
+225,150,300,35,autoregressive_handoff_angle_deg,44.320,45.372,+1.052,-0.781,+2.777,+2.37,-1.77,+6.36
+225,150,300,36,distribution_score,0.9123,0.9151,-0.0028,-0.0238,+0.0188,-0.30,-2.62,+2.06
+225,150,300,36,angular_energy_distance_deg,16.754,16.926,+0.172,-0.748,+1.123,+1.03,-4.45,+6.78

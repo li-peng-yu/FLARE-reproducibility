@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "magnetic-distribution-score"
+version = "0.2.0"
+description = "Distribution-aware evaluation for stochastic micromagnetic structure generators"
+requires-python = ">=3.10"
+dependencies = [
+  "matplotlib>=3.7",
+  "numpy>=1.24",
+  "torch>=2.0",
+]
+
+[project.scripts]
+score-same-condition = "distribution_score.same_condition:main"
+score-cross-condition = "distribution_score.cross_condition:main"
+aggregate-calibration = "distribution_score.calibration:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

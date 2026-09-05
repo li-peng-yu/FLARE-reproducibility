@@ -1,0 +1,18 @@
+# Geometry-OOD MagFlow model with the formal source law.
+output_dir: outputs/paper_formal_20260822/ood_ring_scfm_standard50k
+log_dir: logs/skx_paper_formal_20260822/ood_ring_scfm_standard50k
+
+data:
+  split_manifest: configs/data/ood_ring_split.json
+  stats_cache: configs/stats/ood_ring_scfm_stats.json
+
+prior:
+  type: standard_gaussian
+  fit_kappa: false
+  kappa_multiplier: 1.0
+  kappa: 1.0
+  min_sigma: 1.0e-4
+
+train:
+  visual_out_dir: outputs/paper_formal_20260822/ood_ring_scfm_standard50k/visualizations
+  visual_mode: trajectory

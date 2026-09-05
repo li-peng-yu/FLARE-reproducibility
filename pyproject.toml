@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "skyrmion-cfm"
+version = "0.1.0"
+description = "Conditional flow matching models for skyrmion magnetization dynamics."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "matplotlib>=3.8",
+  "numpy>=1.24,<2",
+  "pyyaml>=6.0",
+  "scipy>=1.11",
+  "torch>=2.1",
+  "tqdm>=4.66",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4", "ruff>=0.4"]
+
+[project.scripts]
+skyrmion-cfm-train = "skyrmion_cfm.train:main"
+skyrmion-cfm-index = "skyrmion_cfm.data.trajectory:main"
+skyrmion-cfm-stats = "skyrmion_cfm.data.compute_stats:main"
+skyrmion-cfm-memmap = "skyrmion_cfm.data.memmap:main"
+
+[tool.setuptools.packages.find]
+include = ["skyrmion_cfm*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,42 @@
+# Parameter-scale-matched deterministic Fourier neural operator baseline.
+# Identity-source residual regression and Euler-1 inference make this a direct
+# target-time-conditioned field-to-field surrogate rather than a flow model.
+output_dir: outputs/paper_full_20260814/stage1_fno50k
+log_dir: logs/skx_paper_full_20260814/stage1_fno50k
+
+data:
+  zeeman_precondition:
+    enabled: false
+
+bridge:
+  state_repr: cart
+  source_mode: identity
+  objective: residual
+  cart:
+    normalize_path: false
+    ignore_norm_factor: true
+
+prior:
+  type: standard_gaussian
+  fit_kappa: false
+  kappa_multiplier: 1.0
+  kappa: 1.0
+  min_sigma: 1.0e-4
+
+model:
+  arch: fno
+  fno:
+    width: 96
+    depth: 4
+    modes: 20
+    padding: 8
+
+train:
+  visual_out_dir: outputs/paper_full_20260814/stage1_fno50k/visualizations
+  visual_mode: trajectory
+  loss:
+    tau_sampling: zero
+
+sampler:
+  ode_steps: 1
+  method: euler

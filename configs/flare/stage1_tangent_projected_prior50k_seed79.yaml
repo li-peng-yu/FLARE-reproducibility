@@ -1,0 +1,20 @@
+# Tangent-projected source-prior representation ablation, seed 79.
+seed: 79
+output_dir: outputs/paper_formal_20260822/representation_ablation/tangent_projected_seed79
+log_dir: logs/skx_paper_formal_20260822/representation_ablation/tangent_projected_seed79
+
+bridge:
+  state_repr: alpha
+  source_mode: anchored
+  objective: residual
+
+prior:
+  type: standard_gaussian
+  fit_kappa: false
+  kappa_multiplier: 1.0
+  kappa: 1.0
+  min_sigma: 1.0e-4
+
+train:
+  visual_examples: 0
+  visual_out_dir: outputs/paper_formal_20260822/representation_ablation/tangent_projected_seed79/visualizations

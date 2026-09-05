@@ -1,0 +1,278 @@
+# From-scratch no-OT/no-change-aware baseline on the SKX 165-base x30 dataset.
+# Training recipe is controlled to match the formal 1000-base x5 Stage-1 run:
+# same model, loss, global batch size, seed, optimizer, and 50k-step schedule.
+# Only dataset paths, split counts, caches, and output locations are changed.
+
+seed: 78
+device: auto
+output_dir: outputs/x30_evaluation
+log_dir: logs/x30_evaluation
+
+data:
+  dataset_root: ${FLARE_DATASET_ROOT}/self_consistency_x30/skx_bt_165base_x30_sharedrelax_20260813
+  lattice_size: 256
+  boundary: open
+  t_end_ns: [0.25, 0.5, 1.0, 2.0, 3.0, 5.0, 10.0, 20.0, 30.0, 50.0, 70.0, 100.0]
+  segment_time_range_ns: [1.0, 6.0]
+  anchor_mode: random
+  condition_mode: v2
+  current_time_mode: segment
+  control_segmented:
+    enabled: true
+    policy: control
+  split_mode: metadata
+  split_seed: 1234
+  train_trajectories: 3960
+  val_trajectories: 480
+  test_trajectories: 510
+  preload: false
+  frame_glob: "run.out/*.ovf"
+  include_before_drive: false
+  train_samples_per_epoch: 100000
+  val_samples_per_epoch: 2000
+  test_samples_per_epoch: 2000
+  val_start_frame_mode: first
+  test_start_frame_mode: first
+  memmap:
+    # Match the original x30 evaluation input precision.
+    enabled: true
+    path: cache/x30_memmap_fp16
+    dtype: float16
+    auto_build: true
+    workers: 16
+  trajectory_index_cache: cache/x30_trajectory_index.pkl
+  stats_cache: cache/x30_dataset_stats.json
+  stats_max_samples: 4096
+  kappa_fit_max_samples: 4096
+  augment:
+    enabled: true
+    rot90: true
+  zeeman_precondition:
+    enabled: true
+    min_cycles: 5.0
+    gamma_hz_per_t: 2.8e10
+    use_spatial_field: true
+    sign: 1.0
+
+bridge:
+  state_repr: alpha
+  source_mode: latent
+  objective: residual
+  cart:
+    ignore_norm_factor: true
+  rfm:
+    source_noise: true
+
+prior:
+  type: physics_scaled
+  fit_kappa: true
+  kappa_multiplier: 1.25
+  kappa: 1.0
+  min_sigma: 1.0e-4
+
+model:
+  arch: unet
+  input_repr: cartesian
+  disable_dt_condition: false
+  cond_dim: 512
+  use_spatial_cond: true
+  v4_full_conditioning: true
+  scalar_condition_keys: &scratch_scalar_condition_keys
+    - alpha
+    - dind_j_per_m2
+    - ku1_j_per_m3
+    - msat_a_per_m
+    - pol_eff
+    - epsilon_prime
+    - fixed_layer_x
+    - fixed_layer_y
+    - fixed_layer_z
+    - anis_u_x
+    - anis_u_y
+    - anis_u_z
+    - cubic_axis_1_x
+    - cubic_axis_1_y
+    - cubic_axis_1_z
+    - cubic_axis_2_x
+    - cubic_axis_2_y
+    - cubic_axis_2_z
+    - cubic_axis_3_x
+    - cubic_axis_3_y
+    - cubic_axis_3_z
+    - anchor_offset_norm
+    - target_offset_norm
+    - temperature_start_k
+    - temperature_segment_midpoint_k
+    - temperature_over_tc
+    - m_reduced
+    - ms_t_a_per_m
+    - ku_t_j_per_m3
+    - d_t_j_per_m2
+    - alpha_t
+    - kc1_t_j_per_m3
+    - kc2_t_j_per_m3
+    - ms_ref_a_per_m
+    - ku_ref_j_per_m3
+    - d_ref_j_per_m2
+    - alpha_ref
+    - tc_k
+    - theta_t
+    - qk_ref
+    - kappa_d_ref
+    - d_d_over_dc_ref
+    - ld_cells_ref
+    - rex
+    - r_min_ref
+    - delta_dw_cells_ref
+    - domain_wall_width_cells_ref
+    - rex_t
+    - r_min_t
+    - ld_cells_t
+    - delta_dw_cells_t
+    - domain_wall_width_cells_t
+    - b_ext_x_t
+    - b_ext_y_t
+    - b_ext_z_t
+    - j_vector_x_a_per_m2
+    - j_vector_y_a_per_m2
+    - j_vector_z_a_per_m2
+    - j_abs_a_per_m2
+    - polarization_x
+    - polarization_y
+    - polarization_z
+    - pre_relaxation_flag
+    - drive_active_flag
+    - has_field
+    - has_zhang_li
+    - has_slonczewski
+    - has_sot
+    - temp_param_beta_ms
+    - temp_param_m_red_min
+    - temp_param_m_red_max
+    - temp_param_p_a
+    - temp_param_p_ku
+    - temp_param_p_d
+    - temp_param_p_kc
+    - temp_param_p_kc2
+    - temp_param_p_b1
+    - temp_param_p_b2
+    - temp_param_c_alpha
+    - temp_param_alpha_min
+    - temp_param_alpha_max
+    - theta_T_T_a_K
+    - theta_T_T_b_K
+    - theta_T_s_time
+    - theta_T_n_cycle
+    - theta_T_delta_T_K
+    - theta_T_x0_norm
+    - theta_T_y0_norm
+    - theta_T_sigma_norm
+    - theta_T_u0_norm
+    - theta_T_w_norm
+  force_scalar_condition_keys: *scratch_scalar_condition_keys
+  per_sample_boundary: true
+  spatial_cond_fields: v4_full
+  time_conditioning:
+    enabled: true
+    embedding_dim: 512
+    bucket_dim: 128
+    fourier_dim: 128
+    hidden_dim: 512
+    scale: 1.0
+  spatial_cond_j_scale: 1.0e11
+  spatial_cond_scales:
+    j_x_field: 1.0e11
+    j_y_field: 1.0e11
+    j_z_field: 1.0e11
+    b_x_field: 1.0e-1
+    b_y_field: 1.0e-1
+    b_z_field: 1.0e-1
+    temperature_field: 3.0e1
+    msat_field: 1.0e5
+    aex_field: 1.0e-12
+    ku1_field: 1.0e7
+    dind_field: 1.0e-4
+    alpha_field: 1.0
+  j_scalar_embedding:
+    enabled: true
+    grid_shape: [8, 8]
+    scale: 1.0e11
+  pulse_condition:
+    enabled: true
+  unet:
+    base_channels: 64
+    channel_mults: [1, 2, 4, 8]
+    num_res_blocks: 2
+    bottleneck_mode: attn
+    bottleneck_depth: 1
+    bottleneck_heads: 8
+    bottleneck_mlp_ratio: 4.0
+    bottleneck_downsample: true
+    attention: true
+    groups: 8
+
+train:
+  batch_size: 128
+  num_workers: 10
+  persistent_workers: true
+  prefetch_factor: 2
+  steps: 50000
+  resume_from: null
+  resume_load_optimizer: false
+  resume_load_ema: false
+  log_every: 50
+  save_every: 2500
+  val_every: 2500
+  visual_out_dir: outputs/x30_evaluation/visualizations
+  visual_examples: 12
+  visual_mode: trajectory
+  visual_diff_vmax: 1.0
+  visual_zoom: true
+  grad_accum_steps: 1
+  amp_dtype: bf16
+  lr: 2.0e-4
+  dit_lr: 5.0e-5
+  min_lr: 2.0e-6
+  warmup_steps: 2500
+  weight_decay: 0.01
+  betas: [0.9, 0.95]
+  ema_decay: 0.9999
+  grad_clip: 1.0
+  compile: false
+  curriculum_steps: 0
+  loss:
+    cfm_weight: 1.0
+    unit_weight: 1.0e-3
+    llg_weight: 0.0
+    topo_weight: 0.0
+    alpha_t_end_ns_max: .inf
+    alpha_mix: 0.0
+    tau_sampling: uniform
+    weight_mode: uniform
+    antipodal_eps: 0.0
+    change_aware_reweight:
+      enabled: false
+      max_weight: 2.0
+      saturation: 0.5
+      power: 1.0
+      normalize: batch
+    minibatch_ot:
+      enabled: false
+      group_keys: [t_end_index]
+      float_tolerance: 1.0e-6
+      min_group_size: 2
+      max_group_size: 128
+      cost_downsample: 8
+
+sampler:
+  ode_steps: 10
+  method: heun
+
+uncertainty:
+  hutchinson_samples: 30
+  tau_points: [0.3, 0.5, 0.7]
+  calibration_spearman_threshold: 0.4
+
+performance:
+  use_fused_ops: true
+  disable_cudnn_sdp: true

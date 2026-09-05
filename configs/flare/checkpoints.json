@@ -1,0 +1,102 @@
+[
+  {
+    "checkpoint": "flare/core_seed78.pt",
+    "override": "flare/stage1_standard_prior50k.yaml"
+  },
+  {
+    "checkpoint": "flare/core_seed79.pt",
+    "override": "flare/stage1_standard_prior50k_seed79.yaml"
+  },
+  {
+    "checkpoint": "flare/core_seed80.pt",
+    "override": "flare/stage1_standard_prior50k_seed80.yaml"
+  },
+  {
+    "checkpoint": "flare/cartesian_seed78.pt",
+    "override": "flare/stage1_cartesian_cfm50k.yaml"
+  },
+  {
+    "checkpoint": "flare/cartesian_seed79.pt",
+    "override": "flare/stage1_cartesian_cfm50k_seed79.yaml"
+  },
+  {
+    "checkpoint": "flare/cartesian_seed80.pt",
+    "override": "flare/stage1_cartesian_cfm50k_seed80.yaml"
+  },
+  {
+    "checkpoint": "flare/tangent_seed78.pt",
+    "override": "flare/stage1_tangent_projected_prior50k_seed78.yaml"
+  },
+  {
+    "checkpoint": "flare/tangent_seed79.pt",
+    "override": "flare/stage1_tangent_projected_prior50k_seed79.yaml"
+  },
+  {
+    "checkpoint": "flare/tangent_seed80.pt",
+    "override": "flare/stage1_tangent_projected_prior50k_seed80.yaml"
+  },
+  {
+    "checkpoint": "flare/alpha2d_seed78.pt",
+    "override": "flare/stage1_alpha2d50k_seed78.yaml"
+  },
+  {
+    "checkpoint": "flare/alpha2d_seed79.pt",
+    "override": "flare/stage1_alpha2d50k_seed79.yaml"
+  },
+  {
+    "checkpoint": "flare/alpha2d_seed80.pt",
+    "override": "flare/stage1_alpha2d50k_seed80.yaml"
+  },
+  {
+    "checkpoint": "flare/rfm_seed78.pt",
+    "override": "flare/stage1_rfm50k_seed78.yaml"
+  },
+  {
+    "checkpoint": "flare/rfm_seed79.pt",
+    "override": "flare/stage1_rfm50k_seed79.yaml"
+  },
+  {
+    "checkpoint": "flare/rfm_seed80.pt",
+    "override": "flare/stage1_rfm50k_seed80.yaml"
+  },
+  {
+    "checkpoint": "flare/no_target_time_seed78.pt",
+    "override": "flare/stage1_no_target_time_standard50k.yaml"
+  },
+  {
+    "checkpoint": "flare/fno_seed78.pt",
+    "override": "flare/stage1_fno50k.yaml"
+  },
+  {
+    "checkpoint": "flare/ood_flare_seed78.pt",
+    "override": "flare/ood_ring_scfm_standard50k.yaml"
+  },
+  {
+    "checkpoint": "flare/ood_fno_seed78.pt",
+    "override": "flare/ood_ring_fno50k.yaml"
+  },
+  {
+    "checkpoint": "flare/stage2_gt_seed78.pt",
+    "override": "flare/stage2_gt_standard25k.yaml"
+  },
+  {
+    "checkpoint": "flare/stage2_mixed_seed78.pt",
+    "override": "flare/stage2_mixed_standard25k.yaml"
+  },
+  {
+    "checkpoint": "flare/stage2_pred_only_seed78.pt",
+    "override": "flare/stage2_pred_only25k.yaml"
+  },
+  {
+    "checkpoint": "flare/direct_unet_seed78.pt",
+    "override": "flare/stage1_rotation_mse50k_seed78.yaml"
+  },
+  {
+    "checkpoint": "flare/direct_unet_seed79.pt",
+    "override": "flare/stage1_rotation_mse50k_seed79.yaml"
+  },
+  {
+    "checkpoint": "flare/direct_unet_seed80.pt",
+    "override": "flare/stage1_rotation_mse50k_seed80.yaml"
+  }
+]

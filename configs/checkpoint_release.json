@@ -1,0 +1,184 @@
+{
+  "checkpoints": [
+    {
+      "path": "checkpoints/baselines/cno_fm.pt",
+      "step": 50000,
+      "seed": 78,
+      "state": "model",
+      "parameter_count": 109258804,
+      "bytes": 437473825,
+      "sha256": "2413bbb8eec1b541b18e2e59d5a689268f0bfe0723d11386c9f0eec28248594b"
+    },
+    {
+      "path": "checkpoints/baselines/dpot_ti.pt",
+      "step": 50000,
+      "seed": 78,
+      "state": "model",
+      "parameter_count": 7583946,
+      "bytes": 30357018,
+      "sha256": "3cf4af02e63e2a804343b4a4acaa73db57bf0608ba23ba0cca0c2aaefd823546"
+    },
+    {
+      "path": "checkpoints/baselines/le_pde.pt",
+      "step": 50000,
+      "seed": 78,
+      "state": "model",
+      "parameter_count": 35031008,
+      "bytes": 140137497,
+      "sha256": "09ff6a3e1801ac0356be29dc8dbeea63f6f71713f8ff9421610c4d75ed9852b1"
+    },
+    {
+      "path": "checkpoints/baselines/mpp_avit_ti.pt",
+      "step": 50000,
+      "seed": 78,
+      "state": "model",
+      "parameter_count": 7316113,
+      "bytes": 29407109,
+      "sha256": "3056548cde804d57b74c00c3adf72330a08f10dd04578ea96694355c3d2481d5"
+    },
+    {
+      "path": "checkpoints/baselines/neuralmag_x5.pt",
+      "step": 50000,
+      "seed": 78,
+      "state": "state_dict",
+      "parameter_count": 1272582,
+      "bytes": 5116935,
+      "sha256": "e7e2bc0e8c706effc5d09ef664f0ceac562506c1f019f5b6e360255117de363e"
+    },
+    {
+      "path": "checkpoints/baselines/pdearena_unet.pt",
+      "step": 50000,
+      "seed": 78,
+      "state": "model",
+      "parameter_count": 31057347,
+      "bytes": 124315259,
+      "sha256": "319a75eb12ea0ecd64ff304b8b3b22f3e3c33d1f4f6739652ec178602a5ae1ea"
+    },
+    {
+      "path": "checkpoints/baselines/poseidon_t.pt",
+      "step": 50000,
+      "seed": 78,
+      "state": "model",
+      "parameter_count": 20798844,
+      "bytes": 83485917,
+      "sha256": "f062d4955f063dc90bbf56382efd4e80919c8e4c748930d11a4f7ee033af2712"
+    },
+    {
+      "path": "checkpoints/flare/alpha2d_seed78.pt",
+      "step": 50000,
+      "seed": 78,
+      "state": "ema",
+      "parameter_count": 65259650,
+      "bytes": 261168299,
+      "sha256": "04b5e90194661d90d9ae04434d57f210fed6097530515bee578d2715f936d425"
+    },
+    {
+      "path": "checkpoints/flare/cartesian_seed78.pt",
+      "step": 50000,
+      "seed": 78,
+      "state": "ema",
+      "parameter_count": 65260803,
+      "bytes": 261173675,
+      "sha256": "483c644e839b25b685a140dd354038f7ba141bfd521998dcaa6803bece17d767"
+    },
+    {
+      "path": "checkpoints/flare/core_seed78.pt",
+      "step": 50000,
+      "seed": 78,
+      "state": "ema",
+      "parameter_count": 65260803,
+      "bytes": 261171851,
+      "sha256": "bc62ea19b1d68ae4b4dfe9b50d32ee22ff70af96f94fff268ada6260d1f80408"
+    },
+    {
+      "path": "checkpoints/flare/direct_unet_seed78.pt",
+      "step": 50000,
+      "seed": 78,
+      "state": "ema",
+      "parameter_count": 65260803,
+      "bytes": 261174379,
+      "sha256": "7489b345bbabc649a6b911ed6be398bc71aef60f7f3cf909c311a291dd527e11"
+    },
+    {
+      "path": "checkpoints/flare/fno_seed78.pt",
+      "step": 50000,
+      "seed": 78,
+      "state": "ema",
+      "parameter_count": 60550339,
+      "bytes": 242238645,
+      "sha256": "50d83449733183368087ac991ff7d1f7af6deef66d330c896344770a89a010b6"
+    },
+    {
+      "path": "checkpoints/flare/no_target_time_seed78.pt",
+      "step": 50000,
+      "seed": 78,
+      "state": "ema",
+      "parameter_count": 65260803,
+      "bytes": 261175435,
+      "sha256": "a721a9e41a549988150ee0717768c44d6ab685634e8437d278151ba3a1fca343"
+    },
+    {
+      "path": "checkpoints/flare/ood_flare_seed78.pt",
+      "step": 50000,
+      "seed": 78,
+      "state": "ema",
+      "parameter_count": 65260803,
+      "bytes": 261173675,
+      "sha256": "ab56e3fcd4d8f38c49d0250a77c47c8555d3666ec0f6f006cec239ccb9d95ad0"
+    },
+    {
+      "path": "checkpoints/flare/ood_fno_seed78.pt",
+      "step": 50000,
+      "seed": 78,
+      "state": "ema",
+      "parameter_count": 60550339,
+      "bytes": 242238937,
+      "sha256": "d91cf03bb31382d26a2dbc189a8b750175470b6dd015f5fa6c5e03276f359bb0"
+    },
+    {
+      "path": "checkpoints/flare/rfm_seed78.pt",
+      "step": 50000,
+      "seed": 78,
+      "state": "ema",
+      "parameter_count": 65260803,
+      "bytes": 261171499,
+      "sha256": "4de4f035e21976daad5e46b764a10eb87dd29e9c94f34d56e1c506d68c3305a4"
+    },
+    {
+      "path": "checkpoints/flare/stage2_gt_seed78.pt",
+      "step": 25000,
+      "seed": 78,
+      "state": "ema",
+      "parameter_count": 65260803,
+      "bytes": 261174251,
+      "sha256": "e548c581e4a2755c4728e3b5dfdcc1e5ec23f51ca5645f66a024099c297bf042"
+    },
+    {
+      "path": "checkpoints/flare/stage2_mixed_seed78.pt",
+      "step": 25000,
+      "seed": 78,
+      "state": "ema",
+      "parameter_count": 65260803,
+      "bytes": 261175435,
+      "sha256": "caa1a28a0107b451c864b4061a5aeee80e99dd55083ce2b5c70136ded4105af3"
+    },
+    {
+      "path": "checkpoints/flare/stage2_pred_only_seed78.pt",
+      "step": 25000,
+      "seed": 78,
+      "state": "ema",
+      "parameter_count": 65260803,
+      "bytes": 261176971,
+      "sha256": "960991295b4598601f14195ca893bacea33c09d57ac63386a499a4c6c8d614e6"
+    },
+    {
+      "path": "checkpoints/flare/tangent_seed78.pt",
+      "step": 50000,
+      "seed": 78,
+      "state": "ema",
+      "parameter_count": 65260803,
+      "bytes": 261172907,
+      "sha256": "a8eece8449b9fe1ffcb26159e7cc8be98c1316255c8d5658b4f51c66a9fc4427"
+    }
+  ]
+}

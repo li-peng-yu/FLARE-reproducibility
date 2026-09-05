@@ -1,0 +1,23 @@
+# Cartesian CFM representation ablation, seed 79.
+seed: 79
+output_dir: outputs/paper_revision_20260824/cartesian_cfm_seed79
+log_dir: logs/skx_paper_revision_20260824/cartesian_cfm_seed79
+
+bridge:
+  state_repr: cart
+  source_mode: latent
+  objective: endpoint
+  cart:
+    normalize_path: false
+    ignore_norm_factor: true
+
+prior:
+  type: standard_gaussian
+  fit_kappa: false
+  kappa_multiplier: 1.0
+  kappa: 1.0
+  min_sigma: 1.0e-4
+
+train:
+  visual_examples: 0
+  visual_out_dir: outputs/paper_revision_20260824/cartesian_cfm_seed79/visualizations

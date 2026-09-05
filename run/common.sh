@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+RUN_DIR="$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(CDPATH= cd -- "${RUN_DIR}/.." && pwd)"
+PYTHON_BIN="${PYTHON_BIN:-python}"
+NATIVE_PYTHON="${NATIVE_PYTHON:-${PYTHON_BIN}}"
+PYTHON_BIN="$(command -v -- "${PYTHON_BIN}")"
+NATIVE_PYTHON="$(command -v -- "${NATIVE_PYTHON}")"
+export PYTHON_BIN NATIVE_PYTHON
+DEVICE="${DEVICE:-cuda}"
+export FLARE_DATASET_ROOT="${FLARE_DATASET_ROOT:-${DATASET_ROOT:-${PROJECT_ROOT}/../FLARE_dataset}}"
+export FLARE_CHECKPOINT_ROOT="${FLARE_CHECKPOINT_ROOT:-${PROJECT_ROOT}/../FLARE_checkpoints}"
+export FLARE_TEMPERATURE_ROOT="${FLARE_TEMPERATURE_ROOT:-${PROJECT_ROOT}/outputs/temperature_data}"
+
+DIST_SCORE_ROOT="${PROJECT_ROOT}/third_party/distribution_score"
+THIRD_PARTY_ROOT="${PROJECT_ROOT}/third_party"
+
+export PYTHONPATH="${PROJECT_ROOT}:${DIST_SCORE_ROOT}/src${PYTHONPATH:+:${PYTHONPATH}}"
+export X5_AUTHOR_REPO_ROOT="${THIRD_PARTY_ROOT}"
+export PYTHONDONTWRITEBYTECODE=1
+export OMP_NUM_THREADS="${OMP_NUM_THREADS:-1}"
+export MKL_NUM_THREADS="${MKL_NUM_THREADS:-1}"
+export PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:True}"
+export MPLCONFIGDIR="${MPLCONFIGDIR:-${PROJECT_ROOT}/.cache/matplotlib}"
+export TORCH_EXTENSIONS_DIR="${TORCH_EXTENSIONS_DIR:-${PROJECT_ROOT}/.cache/torch_extensions}"
+
+mkdir -p "${PROJECT_ROOT}/outputs" "${MPLCONFIGDIR}" "${TORCH_EXTENSIONS_DIR}"
+cd "${PROJECT_ROOT}"

@@ -1,0 +1,42 @@
+{
+  "cloned_at": "2026-08-15",
+  "destination_root": "third_party",
+  "repositories": {
+    "CNO-FM": {
+      "commit": "6e765198aa02b56352e0a3437104b9d9e337176e",
+      "path": "third_party/cno",
+      "url": "https://github.com/camlab-ethz/ConvolutionalNeuralOperator.git"
+    },
+    "DPOT": {
+      "commit": "dcd2f9a9359765e19ad63e2f3f879a2a8ce1aa17",
+      "path": "third_party/dpot",
+      "url": "https://github.com/HaoZhongkai/DPOT.git"
+    },
+    "LE-PDE": {
+      "commit": "850cc4ae9273600159483975151db6082d08ea89",
+      "path": "third_party/le_pde",
+      "required_submodule_pytorch_net_commit": "1d4e9f26bd0e4f0abc44c2cde86fe3946ff983a0",
+      "url": "https://github.com/snap-stanford/le_pde.git"
+    },
+    "MPP": {
+      "commit": "e751fc25ae5274c3ddc869bf73afd6fcd4163cb5",
+      "path": "third_party/mpp",
+      "url": "https://github.com/PolymathicAI/multiple_physics_pretraining.git"
+    },
+    "NeuralMAG": {
+      "commit": "fb27096e111d8600c157605d44078de2a93123c3",
+      "path": "third_party/NeuralMAG",
+      "url": "https://github.com/OpenMatSci/NeuralMAG.git"
+    },
+    "PDEArena": {
+      "commit": "78a8b03d50115d8bb24ce9f04efa5b920fcd4369",
+      "path": "third_party/pdearena",
+      "url": "https://github.com/pdearena/pdearena.git"
+    },
+    "Poseidon": {
+      "commit": "b8fa28f59bd7f7673323f28d11a12c6f3a215c61",
+      "path": "third_party/poseidon",
+      "url": "https://github.com/camlab-ethz/poseidon.git"
+    }
+  }
+}

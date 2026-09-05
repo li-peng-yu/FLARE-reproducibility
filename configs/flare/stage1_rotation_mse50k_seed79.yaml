@@ -1,0 +1,37 @@
+# [FLOW-NECESSITY CONTROL 2026-09-02]
+# Seed-79 replicate of deterministic local axis--angle MSE regression.
+seed: 79
+output_dir: outputs/skx_bt_1000base_x5/paper_revision_20260902/flow_necessity/rotation_mse_seed79
+log_dir: log/skx_paper_revision_20260902/flow_necessity/rotation_mse_seed79
+
+bridge:
+  state_repr: alpha
+  source_mode: identity
+  objective: residual
+
+prior:
+  type: standard_gaussian
+  fit_kappa: false
+  kappa_multiplier: 1.0
+  kappa: 1.0
+  min_sigma: 1.0e-4
+
+train:
+  visual_examples: 0
+  visual_out_dir: outputs/skx_bt_1000base_x5/paper_revision_20260902/flow_necessity/rotation_mse_seed79/visualizations
+  loss:
+    cfm_weight: 1.0
+    unit_weight: 0.0
+    llg_weight: 0.0
+    topo_weight: 0.0
+    alpha_mix: 0.0
+    tau_sampling: zero
+    weight_mode: uniform
+    change_aware_reweight:
+      enabled: false
+    minibatch_ot:
+      enabled: false
+
+sampler:
+  ode_steps: 1
+  method: euler

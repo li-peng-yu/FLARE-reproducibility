@@ -1,0 +1,48 @@
+# Remote evaluation-only matched test cohort at 150 K.
+seed: 78
+
+data:
+  dataset_root: ${FLARE_TEMPERATURE_ROOT}/skx_bt_test300_to150_x5_sharedrelax_20260902
+  lattice_size: 256
+  boundary: open
+  t_end_ns: [0.25, 0.5, 1.0, 2.0, 3.0, 5.0, 10.0, 20.0, 30.0, 50.0, 70.0, 100.0]
+  segment_time_range_ns: [1.0, 6.0]
+  anchor_mode: random
+  condition_mode: v2
+  current_time_mode: segment
+  control_segmented:
+    enabled: true
+    policy: control
+  split_mode: metadata
+  split_seed: 1234
+  train_trajectories: 0
+  val_trajectories: 0
+  test_trajectories: 180
+  preload: false
+  frame_glob: "run.out/*.ovf"
+  include_before_drive: false
+  train_samples_per_epoch: 100000
+  val_samples_per_epoch: 2000
+  test_samples_per_epoch: 2000
+  val_start_frame_mode: first
+  test_start_frame_mode: first
+  memmap:
+    enabled: false
+    path: ${FLARE_TEMPERATURE_ROOT}/cache/temperature_150_matched_test36_memmap_fp16
+    dtype: float16
+    auto_build: false
+    workers: 16
+  trajectory_index_cache: ${FLARE_TEMPERATURE_ROOT}/cache/temperature_150_matched_test36_index.pkl
+  stats_cache: configs/stats/dataset_stats_both.json
+  stats_max_samples: 4096
+  kappa_fit_max_samples: 4096
+  augment:
+    enabled: true
+    rot90: true
+  zeeman_precondition:
+    enabled: true
+    min_cycles: 5.0
+    gamma_hz_per_t: 2.8e10
+    use_spatial_field: true
+    sign: 1.0
+

@@ -1,0 +1,22 @@
+# Riemannian flow-matching comparison, seed 80.
+seed: 80
+output_dir: outputs/paper_formal_20260822/representation_ablation/rfm_seed80
+log_dir: logs/skx_paper_formal_20260822/representation_ablation/rfm_seed80
+
+bridge:
+  state_repr: rfm
+  source_mode: latent
+  objective: endpoint
+  rfm:
+    source_noise: true
+
+prior:
+  type: standard_gaussian
+  fit_kappa: false
+  kappa_multiplier: 1.0
+  kappa: 1.0
+  min_sigma: 1.0e-4
+
+train:
+  visual_examples: 0
+  visual_out_dir: outputs/paper_formal_20260822/representation_ablation/rfm_seed80/visualizations
